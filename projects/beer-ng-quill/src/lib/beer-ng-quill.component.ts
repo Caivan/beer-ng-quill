@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-beer-ng-quill',
+  selector: 'beer-ng-quill',
   template: `
     <div id="{{idEditor}}" name="editor" class="text-layer--viewer"> </div>
   `,
