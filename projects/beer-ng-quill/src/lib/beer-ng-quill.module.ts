@@ -1,6 +1,7 @@
 import { AfterViewInit, Input, NgModule, OnInit } from '@angular/core';
 import { BeerNgQuillComponent } from './beer-ng-quill.component';
 import Quill from 'quill';
+import { ControlValueAccessor } from '@angular/forms';
 
 
 @NgModule({
@@ -9,7 +10,7 @@ import Quill from 'quill';
   ],
   exports: [BeerNgQuillComponent]
 })
-export class BeerNgQuillModule implements OnInit, AfterViewInit { 
+export class BeerNgQuillModule implements AfterViewInit, ControlValueAccessor { 
 
   @Input ()
   options: any;
@@ -17,16 +18,10 @@ export class BeerNgQuillModule implements OnInit, AfterViewInit {
   @Input ()
   idEditor: string;
   
-  constructor() { 
-    
-  }
-
-  ngOnInit(): void {
-
-   
-  }
+  private editorValue: string;
+  
   ngAfterViewInit(): void {
-    
+    this.configQuill ();
   }
 
   configQuill () {
@@ -49,8 +44,36 @@ export class BeerNgQuillModule implements OnInit, AfterViewInit {
     if (this.options) {
       opts = this.options;
     }
-        
-    const editor = new Quill(('#'+this.idEditor), opts);
     
+    
+    const editor = new Quill(('#'+this.idEditor), opts);
+    let objReference = this;
+    editor.on('editor-change', () => objReference.writeValue(editor.root.innerHTML));
+  }
+
+  onChange: any = () => {}
+  onTouch: any = () => {}
+  
+
+  set value(val: string){
+    console.log('set:',val);
+    if( val !== undefined && this.editorValue !== val){
+      this.editorValue = val
+      this.onChange(val)
+      this.onTouch(val)
+    }   
+  }
+
+  writeValue(obj: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnChange(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnTouched(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    throw new Error('Method not implemented.');
   }
 }
