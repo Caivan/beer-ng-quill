@@ -46,6 +46,123 @@
           }
         }
       }
+    },
+    "beer-ng-quill-showcase": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/beer-ng-quill-showcase",
+      "sourceRoot": "projects/beer-ng-quill-showcase/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/beer-ng-quill-showcase",
+            "index": "projects/beer-ng-quill-showcase/src/index.html",
+            "main": "projects/beer-ng-quill-showcase/src/main.ts",
+            "polyfills": "projects/beer-ng-quill-showcase/src/polyfills.ts",
+            "tsConfig": "projects/beer-ng-quill-showcase/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/beer-ng-quill-showcase/src/favicon.ico",
+              "projects/beer-ng-quill-showcase/src/assets"
+            ],
+            "styles": [
+              "projects/beer-ng-quill-showcase/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/beer-ng-quill-showcase/src/environments/environment.ts",
+                  "with": "projects/beer-ng-quill-showcase/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "beer-ng-quill-showcase:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "beer-ng-quill-showcase:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "beer-ng-quill-showcase:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/beer-ng-quill-showcase/src/test.ts",
+            "polyfills": "projects/beer-ng-quill-showcase/src/polyfills.ts",
+            "tsConfig": "projects/beer-ng-quill-showcase/tsconfig.spec.json",
+            "karmaConfig": "projects/beer-ng-quill-showcase/karma.conf.js",
+            "assets": [
+              "projects/beer-ng-quill-showcase/src/favicon.ico",
+              "projects/beer-ng-quill-showcase/src/assets"
+            ],
+            "styles": [
+              "projects/beer-ng-quill-showcase/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/beer-ng-quill-showcase/tsconfig.app.json",
+              "projects/beer-ng-quill-showcase/tsconfig.spec.json",
+              "projects/beer-ng-quill-showcase/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/beer-ng-quill-showcase/e2e/protractor.conf.js",
+            "devServerTarget": "beer-ng-quill-showcase:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "beer-ng-quill-showcase:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "beer-ng-quill"
 }
