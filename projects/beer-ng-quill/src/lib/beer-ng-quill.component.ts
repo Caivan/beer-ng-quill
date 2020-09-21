@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'lib-beer-ng-quill',
   template: `
-    <p>
-      beer-ng-quill works!
-    </p>
+    <div id="{{idEditor}}" name="editor" class="text-layer--viewer"> </div>
   `,
   styles: [
   ]

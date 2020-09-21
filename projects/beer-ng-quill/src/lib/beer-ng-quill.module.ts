@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { AfterViewInit, NgModule, OnInit } from '@angular/core';
 import { BeerNgQuillComponent } from './beer-ng-quill.component';
 
 
@@ -9,4 +9,16 @@ import { BeerNgQuillComponent } from './beer-ng-quill.component';
   ],
   exports: [BeerNgQuillComponent]
 })
-export class BeerNgQuillModule { }
+export class BeerNgQuillModule implements OnInit, AfterViewInit { 
+  constructor() { 
+    
+  }
+
+  ngOnInit(): void {
+
+   
+  }
+  ngAfterViewInit(): void {
+    
+  }
+}
