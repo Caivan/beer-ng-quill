@@ -30,7 +30,11 @@
           "options": {
             "main": "projects/beer-ng-quill/src/test.ts",
             "tsConfig": "projects/beer-ng-quill/tsconfig.spec.json",
-            "karmaConfig": "projects/beer-ng-quill/karma.conf.js"
+            "karmaConfig": "projects/beer-ng-quill/karma.conf.js",
+            "scripts": [
+              "node_modules/quill/dist/quill.js",
+              "node_modules/quill-image-resize/image-resize.min.js"
+            ]
           }
         },
         "lint": {

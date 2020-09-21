@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./single-editor-example.component.css']
 })
 export class SingleEditorExampleComponent implements OnInit {
+  
+  editorControlValue: string;
 
   constructor() { }
 
